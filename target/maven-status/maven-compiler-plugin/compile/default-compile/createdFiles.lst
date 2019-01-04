@@ -1,0 +1,4 @@
+cz\librarius\domain\User.class
+cz\librarius\service\UserService.class
+cz\librarius\repository\UserRepository.class
+cz\librarius\application\Application.class
