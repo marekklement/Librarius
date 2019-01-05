@@ -6,5 +6,7 @@ import cz.librarius.domain.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findUserByUsername(String username);
+    User findUserByUsernameAndPassword(String username, String password);
+
+    User findByUsername(String username);
 }
