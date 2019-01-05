@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <context:annotation-config/>
+    <context:component-scan base-package="cz.librarius"/>
+
+    <bean id="propertySourcesPlaceholderConfigurer" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="order" value="100"/>
+    </bean>
+
+    <!-- Transactions & Repositories -->
+    <import resource="persistence-context.xml"/>
+
+    <!-- Test Datasource configuration -->
+    <bean id="rawDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.hibernate.dialect.Oracle10gDialect"/>
+        <property name="url" value="jdbc:h2:mem:approvalProcessData;MODE=Oracle;MVCC=TRUE;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS RDR\;SET SCHEMA RDR;"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
+    <bean id="dataSource" class="net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy">
+        <constructor-arg ref="rawDataSource"/>
+    </bean>
+
+    <!-- Starts server which allows to connect H2 DB -->
+    <bean id="h2Listener" class="cz.librarius.h2.StartH2Listener"/>
+
+    <!-- Initialize database test data. Should be run only on H2 in-memory database -->
+    <jdbc:initialize-database>
+        <jdbc:script location="sql/librarius-test-schema.sql" encoding="UTF-8"/>
+    </jdbc:initialize-database>
+
+</beans>
