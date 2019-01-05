@@ -19,7 +19,7 @@ public class BookFacadeImpl implements BookFacade {
     }
 
     @Override
-    public State updateListing(long id) {
+    public State updateListing(Listing listing) {
         return null;
     }
 
@@ -30,6 +30,11 @@ public class BookFacadeImpl implements BookFacade {
 
     @Override
     public State removeListing(long id) {
+        return null;
+    }
+
+    @Override
+    public Listing getListing(long id) {
         return null;
     }
 }

@@ -12,11 +12,13 @@ public interface BookFacade {
 
     List<Listing> findListingsByFilter(BookFilter bookFilter);
 
-    State updateListing(long id);
+    State updateListing(Listing listing);
 
     State createListing(Listing listing);
 
     State removeListing(long id);
+
+    Listing getListing(long id);
 
 
 }
