@@ -1,1 +1,5 @@
-cz\librarius\h2\StartH2Listener.class
+cz/librarius/h2/StartH2Listener.class
+cz/librarius/repository/AuthorRepositoryIT.class
+cz/librarius/repository/ListingRepositoryIT.class
+cz/librarius/repository/BookRepositoryIT.class
+cz/librarius/repository/UserRepositoryITJUNIT.class

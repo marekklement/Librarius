@@ -1,4 +1,22 @@
-C:\Skola\5. semester\SIN\Cvicenia\cv03\librarius\src\main\java\cz\librarius\service\UserService.java
-C:\Skola\5. semester\SIN\Cvicenia\cv03\librarius\src\main\java\cz\librarius\application\Application.java
-C:\Skola\5. semester\SIN\Cvicenia\cv03\librarius\src\main\java\cz\librarius\repository\UserRepository.java
-C:\Skola\5. semester\SIN\Cvicenia\cv03\librarius\src\main\java\cz\librarius\domain\User.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/domain/Author.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/domain/Book.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/facade/BookFacadeImpl.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/repository/ListingRepository.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/service/UserServiceImpl.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/service/ListingServiceImpl.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/repository/AuthorRepository.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/service/ListingService.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/utils/BookFilter.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/enums/State.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/application/Application.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/facade/UserFacadeImpl.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/domain/User.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/service/BookService.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/facade/UserFacade.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/repository/UserRepository.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/facade/BookFacade.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/service/BookServiceImpl.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/domain/Listing.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/enums/BookCategory.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/service/UserService.java
+/Users/Kostka/Desktop/VŠ/SIN/git/Librarius/src/main/java/cz/librarius/repository/BookRepository.java
