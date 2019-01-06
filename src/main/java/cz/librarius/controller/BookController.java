@@ -55,7 +55,7 @@ public class BookController {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
     }
-    
+
     public void deleteBook(){
         bookFacade.removeListing(selectedListing);
         State result = bookFacade.updateListing(listing);

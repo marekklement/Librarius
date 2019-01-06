@@ -25,15 +25,15 @@ public class UserLoginController {
 
     @Produces
     @Named
-    User user;
+    User logUser;
 
     @PostConstruct
     public void init(){
-        user = new User();
+        logUser = new User();
     }
 
     public void login(){
-        State result = userFacade.login(user);
+        State result = userFacade.login(logUser);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
         init();

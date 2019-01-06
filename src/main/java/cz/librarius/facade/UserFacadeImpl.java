@@ -6,6 +6,10 @@ import cz.librarius.domain.User;
 import cz.librarius.enums.State;
 import cz.librarius.service.UserService;
 
+import javax.ejb.Stateless;
+import javax.transaction.Transactional;
+
+@Stateless
 public class UserFacadeImpl implements UserFacade {
 
     private UserService userService;

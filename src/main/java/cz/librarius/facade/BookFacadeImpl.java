@@ -6,6 +6,10 @@ import cz.librarius.domain.Listing;
 import cz.librarius.enums.State;
 import cz.librarius.utils.BookFilter;
 
+import javax.ejb.Stateless;
+import javax.transaction.Transactional;
+
+@Stateless
 public class BookFacadeImpl implements BookFacade {
 
     @Override

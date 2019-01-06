@@ -26,15 +26,15 @@ public class UserRegistrationController {
 
     @Produces
     @Named
-    User user;
+    User regUser;
 
     @PostConstruct
     public void init(){
-        user = new User();
+        regUser = new User();
     }
 
     public void register(){
-        State result = userFacade.register(user);
+        State result = userFacade.register(regUser);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
         init();
