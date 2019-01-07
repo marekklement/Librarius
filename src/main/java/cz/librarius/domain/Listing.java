@@ -1,5 +1,6 @@
 package cz.librarius.domain;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "LI_LISTING")
 @SequenceGenerator(name = Listing.SEQ_NAME, sequenceName = Listing.SEQ_NAME)
-public class Listing {
+public class Listing implements Serializable {
 
     static final String SEQ_NAME = "SEQ_LI_LISTING";
 

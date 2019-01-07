@@ -2,16 +2,17 @@ package cz.librarius.service;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+
 import cz.librarius.domain.Book;
 import cz.librarius.repository.BookRepository;
 
+@Stateless
 public class BookServiceImpl implements BookService {
 
-    private final BookRepository bookRepository;
-
-    public BookServiceImpl(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+    @Inject
+    private BookRepository bookRepository;
 
     @Override
     public void addBook(Book book) {

@@ -2,16 +2,17 @@ package cz.librarius.facade;
 
 import java.time.LocalDate;
 
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+
 import cz.librarius.domain.User;
 import cz.librarius.enums.State;
 import cz.librarius.service.UserService;
 
-import javax.ejb.Stateless;
-import javax.transaction.Transactional;
-
-@Stateless
+@Transactional
 public class UserFacadeImpl implements UserFacade {
 
+    @Inject
     private UserService userService;
 
     @Override

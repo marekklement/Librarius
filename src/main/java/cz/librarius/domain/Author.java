@@ -1,5 +1,6 @@
 package cz.librarius.domain;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "LI_AUTHOR")
 @SequenceGenerator(name = Author.SEQ_NAME, sequenceName = Author.SEQ_NAME)
-public class Author {
+public class Author implements Serializable {
 
     static final String SEQ_NAME = "SEQ_LI_AUTHOR";
 

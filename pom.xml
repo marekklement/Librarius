@@ -9,114 +9,14 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <version.jpa-repository>2.1.3.RELEASE</version.jpa-repository>
-        <version.log4jdbc>1.16</version.log4jdbc>
-        <version.hibernate>5.2.17.Final</version.hibernate>
-        <version.spring>5.1.3.RELEASE</version.spring>
-
-        <!-- LOGGING -->
-        <version.slf4j>1.7.5</version.slf4j>
-
-        <!-- Test -->
-        <version.spock>1.1-groovy-2.4</version.spock>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.javax.jee.api.version>7.0</version.javax.jee.api.version>
         <version.org.wildfly>8.0.0.Final</version.org.wildfly>
         <version.arquillian_core>1.1.4.Final</version.arquillian_core>
-        <version.h2>1.4.197</version.h2>
+        <version.jpa-repository>2.1.3.RELEASE</version.jpa-repository>
     </properties>
 
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <!-- Java EE doesn't require web.xml, Maven needs to
-                        catch up! -->
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.0.2.Final</version>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.17</version>
-                <configuration>
-                    <systemProperties>
-                        <property>
-                            <name>java.util.logging.manager</name>
-                            <value>org.jboss.logmanager.LogManager</value>
-                        </property>
-                    </systemProperties>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
-                <version>3.8.0</version>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.1.1.RELEASE</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.gmavenplus</groupId>
-                <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.5</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-        </plugins>
-    </build>
-
     <dependencies>
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.0.6.RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${version.spring}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.6.4</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
         <dependency>
@@ -125,11 +25,11 @@
             <version>${version.jpa-repository}</version>
         </dependency>
 
-        <!-- Hibernate -->
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${version.hibernate}</version>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -139,55 +39,24 @@
             <version>1.0.0.Final</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
         <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${version.h2}</version>
-            <!--<scope>test</scope>-->
-        </dependency>
-
-        <dependency>
-            <groupId>org.bgee.log4jdbc-log4j2</groupId>
-            <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
-            <version>${version.log4jdbc}</version>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+        <!-- Klidne to smaz, dal jsem tam prvni co jsem nasel -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${version.spring}</version>
-            <scope>test</scope>
+            <groupId>javax.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.1</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+        <!-- JUnit -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${version.spring}</version>
-        </dependency>
-
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.springframework/spring-orm &ndash;&gt;-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>5.1.3.RELEASE</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/oracle/ojdbc6
-        <dependency>
-            <groupId>com.oracle</groupId>
-            <artifactId>ojdbc6</artifactId>
-            <version>12.1.0.2.0</version>
-        </dependency>-->
-
-        <!-- Spock framework-->
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <version>${version.spock}</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
             <scope>test</scope>
         </dependency>
 
@@ -214,20 +83,6 @@
             <version>1.0.0.Alpha7</version>
         </dependency>
         <!-- Arquillian -->
-
-        <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.faces</groupId>
-            <artifactId>jsf-api</artifactId>
-            <version>2.1</version>
-        </dependency>
-
     </dependencies>
 
     <dependencyManagement>
@@ -255,6 +110,126 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <!-- Maven will append the version to the finalName (which is the
+            isbn given to the generated WAR, and hence the context root) -->
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <!-- Java EE doesn't require web.xml, Maven needs to
+                        catch up! -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <!-- The WildFly plug-in deploys your WAR to a local WildFly container -->
+            <!-- To use, run: mvn package wildfly:deploy -->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.2.Final</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.17</version>
+                <configuration>
+                    <systemProperties>
+                        <property>
+                            <name>java.util.logging.manager</name>
+                            <value>org.jboss.logmanager.LogManager</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+
+        <!-- Arquillian WildFly managed profile -->
+        <profile>
+            <id>arq-wildfly-managed</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <version>${version.org.wildfly}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <testResources>
+                    <testResource>
+                        <directory>src/test/resources</directory>
+                    </testResource>
+                </testResources>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.wildfly</groupId>
+                                            <artifactId>wildfly-dist</artifactId>
+                                            <version>${version.org.wildfly}</version>
+                                            <type>zip</type>
+                                            <overWrite>false</overWrite>
+                                            <outputDirectory>${project.build.directory}</outputDirectory>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- Arquillian WildFly remote profile -->
+        <profile>
+            <id>arq-wildfly-remote</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly</groupId>
+                    <artifactId>wildfly-arquillian-container-remote</artifactId>
+                    <version>${version.org.wildfly}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+
+    </profiles>
+
+    <repositories>
+        <repository>
+            <id>JBoss Repository</id>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 
 
 </project>

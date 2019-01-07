@@ -1,8 +1,6 @@
 package cz.librarius.domain;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -28,7 +26,7 @@ import cz.librarius.enums.BookCategory;
 @Entity
 @Table(name = "LI_BOOK")
 @SequenceGenerator(name = Book.SEQ_NAME, sequenceName = Book.SEQ_NAME)
-public class Book {
+public class Book implements Serializable {
 
     static final String SEQ_NAME = "SEQ_LI_BOOK";
 
@@ -68,7 +66,6 @@ public class Book {
         this.title = title;
     }
 
-    @Fetch(FetchMode.JOIN)
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(
         name = "LI_BOOK_ISBN",
@@ -86,7 +83,6 @@ public class Book {
         this.ISBNs = ISBNs;
     }
 
-    @Fetch(FetchMode.JOIN)
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
         name = "LI_BOOK_CATEGORY",

@@ -2,19 +2,23 @@ package cz.librarius.facade;
 
 import java.util.List;
 
-import cz.librarius.domain.Listing;
-import cz.librarius.enums.State;
-import cz.librarius.utils.BookFilter;
-
-import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 
-@Stateless
+import cz.librarius.domain.Listing;
+import cz.librarius.enums.State;
+import cz.librarius.service.ListingService;
+import cz.librarius.utils.BookFilter;
+
+@Transactional
 public class BookFacadeImpl implements BookFacade {
+
+    @Inject
+    ListingService listingService;
 
     @Override
     public List<Listing> getAllListings() {
-        return null;
+        return listingService.findAllListings();
     }
 
     @Override
@@ -24,21 +28,32 @@ public class BookFacadeImpl implements BookFacade {
 
     @Override
     public State updateListing(Listing listing) {
-        return null;
+        listingService.updateListing(listing);
+
+        return State.OK;
     }
 
     @Override
     public State createListing(Listing listing) {
-        return null;
+        listingService.addListing(listing);
+
+        return State.OK;
     }
 
     @Override
     public State removeListing(long id) {
-        return null;
+        Listing foundListing = listingService.findById(id);
+        State state = State.OK;
+
+        if (foundListing == null) {
+            state = State.FAIL_LISTING_NOT_EXIST;
+        }
+
+        return state;
     }
 
     @Override
     public Listing getListing(long id) {
-        return null;
+        return listingService.findById(id);
     }
 }

@@ -19,6 +19,4 @@ public interface BookFacade {
     State removeListing(long id);
 
     Listing getListing(long id);
-
-
 }

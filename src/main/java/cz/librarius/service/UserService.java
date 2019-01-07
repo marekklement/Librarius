@@ -4,9 +4,6 @@ import java.time.LocalDate;
 
 import cz.librarius.domain.User;
 
-/**
- * Kontrola hesla
- */
 public interface UserService {
 
     void register(User user);

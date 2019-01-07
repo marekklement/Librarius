@@ -1,22 +1,18 @@
 package cz.librarius.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
+
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
 import cz.librarius.domain.User;
 import cz.librarius.repository.UserRepository;
 
-@Service
-public class UserServiceImpl implements UserService{
+@Stateless
+public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Inject
+    private UserRepository userRepository;
 
     @Override
     public void register(User user) {
