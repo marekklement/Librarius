@@ -10,20 +10,20 @@
         <h3>Login</h3>
         <h:panelGrid columns="3">
             <h:outputLabel for="username">Username:</h:outputLabel>
-            <h:inputText id="username" value="#{logUser.username}" />
+            <h:inputText id="username" value="#{userLoginController.logUser.username}" />
             <h:message for="username"/>
 
 
             <h:outputLabel for="password">Password:</h:outputLabel>
-            <h:inputSecret id="password" value="#{logUser.password}"/>
+            <h:inputSecret id="password" value="#{userLoginController.logUser.password}"/>
             <h:message for="password"/>
         </h:panelGrid>
 
         <p>
             <h:panelGrid columns="2">
-                <h:commandButton id="register"
+                <h:commandButton id="login"
                                  action="#{userLoginController.login}"
-                                 value="Register" styleClass="register"/>
+                                 value="Login" styleClass="login"/>
                 <h:messages styleClass="messages"
                             errorClass="invalid" infoClass="valid"
                             warnClass="warning" globalOnly="true"/>

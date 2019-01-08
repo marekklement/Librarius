@@ -1,5 +1,6 @@
 package cz.librarius.controller;
 
+import com.sun.tracing.dtrace.ModuleAttributes;
 import cz.librarius.domain.Book;
 import cz.librarius.domain.Listing;
 import cz.librarius.enums.BookCategory;
@@ -11,13 +12,14 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 
-@Model
+@ManagedBean
 @RequestScoped
 public class BookController {
 

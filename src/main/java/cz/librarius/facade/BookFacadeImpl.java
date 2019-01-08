@@ -14,7 +14,7 @@ import cz.librarius.utils.BookFilter;
 public class BookFacadeImpl implements BookFacade {
 
     @Inject
-    ListingService listingService;
+    private ListingService listingService;
 
     @Override
     public List<Listing> getAllListings() {

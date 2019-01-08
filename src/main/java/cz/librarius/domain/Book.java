@@ -6,25 +6,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import cz.librarius.enums.BookCategory;
 
 @Entity
 @Table(name = "LI_BOOK")
+@NamedQueries({
+        @NamedQuery(name = "findBookByTitle", query = "select b from Book b where b.title = :title"),
+})
 @SequenceGenerator(name = Book.SEQ_NAME, sequenceName = Book.SEQ_NAME)
 public class Book implements Serializable {
 

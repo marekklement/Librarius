@@ -8,14 +8,14 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import cz.librarius.domain.User;
-import cz.librarius.repository.UserRepository;
+import cz.librarius.repository.UserRepoImpl;
 
 @Transactional
 @ApplicationScoped
 public class UserServiceImpl implements UserService {
 
     @Inject
-    private UserRepository userRepository;
+    private UserRepoImpl userRepository;
 
     @Override
     public void register(User user) {
