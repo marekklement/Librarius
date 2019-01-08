@@ -24,8 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-@ManagedBean
-@ViewScoped
+@Model
 public class CreateListingController implements Serializable {
 
     @Inject

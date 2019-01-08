@@ -30,17 +30,17 @@ public class ListingServiceImpl implements ListingService {
 
     @Override
     public List<Listing> findAllListings() {
-        return listingRepository.list();
+        return listingRepository.findAll();
     }
 
     @Override
     public Listing findById(long id) {
-        return listingRepository.find(id);
+        return listingRepository.findById(id).orElse(null);
     }
 
     @Override
     public void updateListing(Listing listing) {
-        Listing foundListing = listingRepository.find(listing.getId());
+        Listing foundListing = listingRepository.findById(listing.getId()).orElse(null);
 
         if (foundListing != null) {
             foundListing.setUser(listing.getUser());

@@ -1,24 +1,28 @@
 package cz.librarius.service;
 
 import java.time.LocalDate;
+import java.util.logging.Logger;
 
-import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import cz.librarius.domain.User;
-import cz.librarius.repository.UserRepoImpl;
+import cz.librarius.repository.UserRepository;
 
 @Transactional
 @ApplicationScoped
 public class UserServiceImpl implements UserService {
 
     @Inject
-    private UserRepoImpl userRepository;
+    private Logger logger;
+
+    @Inject
+    private UserRepository userRepository;
 
     @Override
     public void register(User user) {
+        logger.info("save user " + user.getUsername() + " " + user.getPassword());
         userRepository.save(user);
     }
 

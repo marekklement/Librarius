@@ -14,10 +14,11 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.persistence.ManyToOne;
+
 import java.io.Serializable;
 
-@ManagedBean
-@ApplicationScoped
+@Model
 public class UserLoginController implements Serializable {
 
     @Inject
@@ -26,6 +27,8 @@ public class UserLoginController implements Serializable {
     @Inject
     private UserFacade userFacade;
 
+    @Produces
+    @Named
     private User logUser;
 
 

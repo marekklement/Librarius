@@ -1,6 +1,7 @@
 package cz.librarius.facade;
 
 import java.time.LocalDate;
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -14,9 +15,12 @@ public class UserFacadeImpl implements UserFacade {
     @Inject
     private UserService userService;
 
+    @Inject
+    private Logger logger;
+
     @Override
     public State register(User user) {
-
+        logger.info("saveFacade user " + user.getUsername() + " " + user.getPassword());
         State state = State.OK;
 
         if (userService.isExistUser(user.getUsername())) {

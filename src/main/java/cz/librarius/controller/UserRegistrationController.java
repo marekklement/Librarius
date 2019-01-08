@@ -15,9 +15,9 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.time.LocalDate;
+import java.util.logging.Logger;
 
-@ManagedBean
-@RequestScoped
+@Model
 public class UserRegistrationController {
 
     @Inject
@@ -30,6 +30,9 @@ public class UserRegistrationController {
     @Named
     User regUser;
 
+    @Inject
+    private Logger logger;
+
     @PostConstruct
     public void init(){
         regUser = new User();
@@ -38,6 +41,7 @@ public class UserRegistrationController {
     public String register(){
         regUser.setLastLoginDate(LocalDate.now());
         regUser.setRegistrationDate(LocalDate.now());
+        logger.info("saveController user " + regUser.getUsername() + " " + regUser.getPassword());
         State result = userFacade.register(regUser);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
