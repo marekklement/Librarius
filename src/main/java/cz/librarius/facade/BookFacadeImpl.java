@@ -10,7 +10,7 @@ import cz.librarius.enums.State;
 import cz.librarius.service.ListingService;
 import cz.librarius.utils.BookFilter;
 
-@Transactional
+
 public class BookFacadeImpl implements BookFacade {
 
     @Inject

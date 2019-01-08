@@ -25,12 +25,12 @@
         <property name="password" value=""/>
     </bean>
 
-    <bean id="dataSource" class="net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy">
-        <constructor-arg ref="rawDataSource"/>
-    </bean>
+    <!--<bean id="dataSource" class="net.sf.log4jdbc.sql.jdbcapi.DataSourceSpy">-->
+        <!--<constructor-arg ref="rawDataSource"/>-->
+    <!--</bean>-->
 
     <!-- Starts server which allows to connect H2 DB -->
-    <bean id="h2Listener" class="cz.librarius.h2.StartH2Listener"/>
+    <!--<bean id="h2Listener" class="cz.librarius.h2.StartH2Listener"/>-->
 
     <!-- Initialize database test data. Should be run only on H2 in-memory database -->
     <jdbc:initialize-database>

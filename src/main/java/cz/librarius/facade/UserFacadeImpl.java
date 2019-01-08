@@ -9,7 +9,6 @@ import cz.librarius.domain.User;
 import cz.librarius.enums.State;
 import cz.librarius.service.UserService;
 
-@Transactional
 public class UserFacadeImpl implements UserFacade {
 
     @Inject

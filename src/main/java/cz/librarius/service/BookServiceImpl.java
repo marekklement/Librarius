@@ -3,12 +3,15 @@ package cz.librarius.service;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import cz.librarius.domain.Book;
 import cz.librarius.repository.BookRepository;
 
-@Stateless
+@Transactional
+@ApplicationScoped
 public class BookServiceImpl implements BookService {
 
     @Inject

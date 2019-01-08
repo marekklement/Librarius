@@ -1,11 +1,13 @@
 package cz.librarius.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.cdi.Eager;
 
 import java.util.List;
 
 import cz.librarius.domain.Listing;
 
+@Eager
 public interface ListingRepository extends JpaRepository<Listing, Long> {
 
     List<Listing> findAllByIsbn(String isbn);

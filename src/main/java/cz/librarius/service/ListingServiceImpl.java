@@ -3,13 +3,16 @@ package cz.librarius.service;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import cz.librarius.domain.Listing;
 import cz.librarius.repository.ListingRepository;
 import cz.librarius.utils.BookFilter;
 
-@Stateless
+@Transactional
+@ApplicationScoped
 public class ListingServiceImpl implements ListingService {
 
     @Inject
