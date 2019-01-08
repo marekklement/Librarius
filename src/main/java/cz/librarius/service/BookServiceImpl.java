@@ -2,13 +2,13 @@ package cz.librarius.service;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import cz.librarius.domain.Book;
 import cz.librarius.repository.BookRepository;
 
-@Stateless
+@Transactional
 public class BookServiceImpl implements BookService {
 
     @Inject
@@ -21,7 +21,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getAll() {
-        return bookRepository.list();
+        return bookRepository.findAll();
     }
 
     @Override
