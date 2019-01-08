@@ -3,16 +3,21 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-<f:view>
-    <h:form>
-        <p:menu>
-            <p:menuitem value="Sign in" url="login.xhtml"/>
-            <p:menuitem value="Register" url="registration.xhtml"/>
-        </p:menu>
-    </h:form>
-    <h:outputLabel value="Pick whatever you want to do here!"/>
-</f:view>
+      xmlns:b="http://bootsfaces.net/ui"
+>
+
+<h:head>
+    <title>index</title>
+
+</h:head>
+<h:outputStylesheet library="css" name="style.css"/>
+<h:body styleClass="c2">
+    <b:navBar brand="Home" brandHref="index.xhtml" inverse="true">
+        <b:navbarLinks>
+            <b:navLink value="Sign in" href="login.xhtml"/>
+            <b:navLink value="Register" href="registration.xhtml"/>
+        </b:navbarLinks>
+    </b:navBar>
+</h:body>
+
 </html>

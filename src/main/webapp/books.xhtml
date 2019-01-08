@@ -4,26 +4,37 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 
+<h:head>
+    <title>books</title>
+</h:head>
+<h:outputStylesheet library="css" name="style.css" styleClass="c2"/>
+<h:body >
+    <b:navBar brand="Home" brandHref="home.xhtml" inverse="true">
+        <b:navbarLinks>
+            <b:navLink value="Offer book" href="offer-book.xhtml"/>
+            <b:navLink value="Books" href="books.xhtml"/>
+            <b:navLink value="Logout" href="index.xhtml"/>
+        </b:navbarLinks>
+    </b:navBar>
+</h:body>
 <f:view>
     <h:form>
-        <h2>Book offers</h2>
-        <h:selectOneListbox value="#{bookController.selectedListing}">
-            <f:selectItems value="#{bookController.bookList}" var="listing" itemValue="#{listing.id}" itemLabel="#{listing.book.title}" />
-        </h:selectOneListbox>
+        <b:dataTable value="#{bookController.bookList}"
+                     excel="true"
+                     csv="true"
+                     pdf="true"
+                     columnVisibility="true"
+                     copy="true"
+                     print="true"
+                     var="listing">
+            <b:dataTableColumn value="#{listing.book.authors}" label="Author"/>
+            <b:dataTableColumn value="#{listing.book.title}" label = "Title"/>
 
-        <p>
-            <h:panelGrid columns="2">
-                <h:commandButton id="detail"
-                                 action="#{bookController.showListingDetail}"
-                                 value="Detail" styleClass="detail"/>
-                <h:messages styleClass="messages"
-                            errorClass="invalid" infoClass="valid"
-                            warnClass="warning" globalOnly="true"/>
-            </h:panelGrid>
-        </p>
+        </b:dataTable>
     </h:form>
+
 </f:view>
 
 </html>
