@@ -27,6 +27,10 @@
                 <h:inputText id="bookName" value="#{book.title}"/>
                 <h:message for="bookName" errorClass="invalid"/>
 
+                <h:outputLabel for="bookISBN">ISBN if the book:</h:outputLabel>
+                <h:inputText id="bookISBN" value="#{newListing.isbn}"/>
+                <h:message for="bookISBN" errorClass="invalid"/>
+
                 <h:outputLabel for="author">Author</h:outputLabel>
                 <h:inputText id="author" value="#{createListingController.author}"/>
                 <h:message for="author" errorClass="invalid"/>
