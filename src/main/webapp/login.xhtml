@@ -1,11 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:b="http://bootsfaces.net/ui">
 <h:head>
     <title>login</title>
 </h:head>
+
+
 <h:body>
+    <b:navBar brand="Home" brandHref="index.xhtml" inverse="true">
+        <b:navbarLinks>
+            <b:navLink value="Sign in" href="login.xhtml"/>
+            <b:navLink value="Register" href="registration.xhtml"/>
+        </b:navbarLinks>
+    </b:navBar>
+    <h:outputStylesheet library="css" name="style.css"  />
     <h:form>
         <h3>Login</h3>
         <h:panelGrid columns="3">
