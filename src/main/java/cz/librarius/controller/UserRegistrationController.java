@@ -9,13 +9,14 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.time.LocalDate;
 
-@Model
+@ManagedBean
 @RequestScoped
 public class UserRegistrationController {
 
