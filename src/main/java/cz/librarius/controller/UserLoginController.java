@@ -15,6 +15,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.logging.Logger;
 
 @ManagedBean
 @ApplicationScoped
@@ -26,6 +27,9 @@ public class UserLoginController implements Serializable {
     @Inject
     private UserFacade userFacade;
 
+    @Inject
+    private Logger logger;
+
     private User logUser;
 
 
@@ -35,6 +39,7 @@ public class UserLoginController implements Serializable {
     }
 
     public String login(){
+        logger.info("Logging user " + logUser.getUsername());
         State result = userFacade.login(logUser);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);

@@ -34,6 +34,9 @@ public class CreateListingController implements Serializable {
     @Inject
     private BookFacade bookFacade;
 
+    @Inject
+    private Logger logger;
+
     @Produces
     @Named
     private Listing newListing;
@@ -54,6 +57,7 @@ public class CreateListingController implements Serializable {
     }
 
     public void createListing(){
+        logger.info("Creating listing " + book.getTitle() + " with user " + loggedUser.getUsername());
         Author newAuthor = new Author();
         newAuthor.setName(author);
         List<Author> list = new ArrayList<>();
