@@ -36,8 +36,7 @@ public class UserLoginController {
         State result = userFacade.login(logUser);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
-        init();
         if (result == State.FAIL) return "login";
-        else return "books";
+        else return "home";
     }
 }

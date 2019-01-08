@@ -34,12 +34,14 @@ public class UserRegistrationController {
         regUser = new User();
     }
 
-    public void register(){
+    public String register(){
         regUser.setLastLoginDate(LocalDate.now());
         regUser.setRegistrationDate(LocalDate.now());
         State result = userFacade.register(regUser);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
         init();
+        if (result == State.FAIL) return "registration";
+        else return "login";
     }
 }

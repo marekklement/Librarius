@@ -6,13 +6,13 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import cz.librarius.domain.User;
-import cz.librarius.repository.UserRepository;
+import cz.librarius.repository.UserRepoImpl;
 
 @Stateless
 public class UserServiceImpl implements UserService {
 
     @Inject
-    private UserRepository userRepository;
+    private UserRepoImpl userRepository;
 
     @Override
     public void register(User user) {

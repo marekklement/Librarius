@@ -6,7 +6,9 @@ import java.util.List;
 
 import cz.librarius.domain.Listing;
 
-public interface ListingRepository extends JpaRepository<Listing, Long> {
+import javax.ejb.Stateless;
+
+public interface ListingRepository extends Repository<Listing> {
 
     List<Listing> findAllByIsbn(String isbn);
 

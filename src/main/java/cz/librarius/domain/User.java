@@ -1,14 +1,14 @@
 package cz.librarius.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "findUserByUsername", query = "select u from User u where u.username = :username"),
+        @NamedQuery(name = "findUserByUsernameAndPassword", query = "select u from User u where u.username = :username and u.password = :password")
+})
 @Table(name = "LI_USER")
 public class User implements Serializable {
 
