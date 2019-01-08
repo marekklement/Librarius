@@ -17,15 +17,15 @@
             <h2>Book offer</h2>
             <h:panelGrid columns="3">
                 <h:outputLabel for="bookName">Name of the book:</h:outputLabel>
-                <h:inputText id="bookName" value="#{.bookName}"/>
+                <h:inputText id="bookName" value="#{book.title}"/>
                 <h:message for="bookName" errorClass="invalid"/>
 
                 <h:outputLabel for="author">Author</h:outputLabel>
-                <h:inputText id="author" value="#{newBook.author}"/>
+                <h:inputText id="author" value="#{createListingController.author}"/>
                 <h:message for="author" errorClass="invalid"/>
 
                 <h:outputLabel for="prize">Prize:</h:outputLabel>
-                <h:inputText id="prize" value="#{newBook.prize}"/>
+                <h:inputText id="prize" value="#{newListing.price}"/>
                 <h:message for="prize" errorClass="invalid"/>
 
 
@@ -33,8 +33,9 @@
             <p>
                 <h:panelGrid columns="2">
                     <h:commandButton id="offerBook"
-                                     action="#{personRegistrationController.registerNewPerson}"
-                                     value="Offer" styleClass="offerBook"/>
+                                     action="#{createListingController.createListing(logUser)}"
+                                     value="Offer" styleClass="offerBook">
+                    </h:commandButton>
                     <h:messages styleClass="messages"
                                 errorClass="invalid" infoClass="valid"
                                 warnClass="warning" globalOnly="true"/>

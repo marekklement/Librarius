@@ -8,18 +8,27 @@
 <h:body>
     <h:form>
         <h3>Login</h3>
-        <h:outputText value="Username" />
-        <h:inputText id="username" value="#{logUser.username}" />
-        <h:message for="username"/>
-        <br/><br/>
+        <h:panelGrid columns="3">
+            <h:outputLabel for="username">Username:</h:outputLabel>
+            <h:inputText id="username" value="#{logUser.username}" />
+            <h:message for="username"/>
 
-        <h:outputText value="Password" />
-        <h:inputSecret id="password" value="#{logUser.password}"/>
-        <h:message for="password"/>
-        <br/><br/>
 
-        <h:commandButton action="#{userLoginController.login}"
-                         value="Login" />
+            <h:outputLabel for="password">Password:</h:outputLabel>
+            <h:inputSecret id="password" value="#{logUser.password}"/>
+            <h:message for="password"/>
+        </h:panelGrid>
+
+        <p>
+            <h:panelGrid columns="2">
+                <h:commandButton id="register"
+                                 action="#{userLoginController.login}"
+                                 value="Register" styleClass="register"/>
+                <h:messages styleClass="messages"
+                            errorClass="invalid" infoClass="valid"
+                            warnClass="warning" globalOnly="true"/>
+            </h:panelGrid>
+        </p>
     </h:form>
 </h:body>
 </html>

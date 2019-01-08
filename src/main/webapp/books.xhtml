@@ -6,11 +6,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 
-<h:dataTable value="#{bookCatalog.books}" var="book">
-    <h:column>
-        <h:link value="#{book.title}" outcome="book">
-            <f:param name="id" value="#{book.id}" />
-        </h:link>
-    </h:column>
-</h:dataTable>
+<f:view>
+    <h:form>
+        <h2>Book offers</h2>
+        <h:selectOneListbox value="#{bookController.selectedListing}">
+            <f:selectItems value="#{bookController.bookList}" var="listing" itemValue="#{listing.id}" itemLabel="#{listing.book.title}" />
+        </h:selectOneListbox>
+
+        <p>
+            <h:panelGrid columns="2">
+                <h:commandButton id="detail"
+                                 action="#{bookController.showListingDetail}"
+                                 value="Detail" styleClass="detail"/>
+                <h:messages styleClass="messages"
+                            errorClass="invalid" infoClass="valid"
+                            warnClass="warning" globalOnly="true"/>
+            </h:panelGrid>
+        </p>
+    </h:form>
+</f:view>
+
 </html>

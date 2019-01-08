@@ -44,9 +44,9 @@ public class BookController {
         bookList = bookFacade.findListingsByFilter(new BookFilter(isbn, title, author, BookCategory.valueOf(selectedCategory)));
     }
 
-    public String getListingDetail(){
+    public String showListingDetail(){
         listing = bookFacade.getListing(selectedListing);
-        return "book-detail.xhtml";
+        return "book-detail";
     }
 
     public void updateBook(){
@@ -60,5 +60,77 @@ public class BookController {
         bookFacade.removeListing(selectedListing);
         State result = bookFacade.updateListing(listing);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getSelectedCategory() {
+        return selectedCategory;
+    }
+
+    public void setSelectedCategory(String selectedCategory) {
+        this.selectedCategory = selectedCategory;
+    }
+
+    public Long getSelectedListing() {
+        return selectedListing;
+    }
+
+    public void setSelectedListing(Long selectedListing) {
+        this.selectedListing = selectedListing;
+    }
+
+    public Double getNewPrice() {
+        return newPrice;
+    }
+
+    public void setNewPrice(Double newPrice) {
+        this.newPrice = newPrice;
+    }
+
+    public Listing getListing() {
+        return listing;
+    }
+
+    public void setListing(Listing listing) {
+        this.listing = listing;
+    }
+
+    public BookCategory[] getCathegories() {
+        return cathegories;
+    }
+
+    public void setCathegories(BookCategory[] cathegories) {
+        this.cathegories = cathegories;
+    }
+
+    public List<Listing> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Listing> bookList) {
+        this.bookList = bookList;
     }
 }

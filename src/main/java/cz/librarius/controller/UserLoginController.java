@@ -32,10 +32,12 @@ public class UserLoginController {
         logUser = new User();
     }
 
-    public void login(){
+    public String login(){
         State result = userFacade.login(logUser);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
         init();
+        if (result == State.FAIL) return "login";
+        else return "books";
     }
 }

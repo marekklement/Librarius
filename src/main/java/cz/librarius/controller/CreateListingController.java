@@ -1,9 +1,11 @@
 package cz.librarius.controller;
 
 
+import cz.librarius.domain.Book;
 import cz.librarius.domain.User;
+import cz.librarius.domain.Listing;
 import cz.librarius.enums.State;
-import cz.librarius.facade.UserFacade;
+import cz.librarius.facade.BookFacade;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -13,33 +15,48 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.time.LocalDate;
 
 @Model
 @RequestScoped
-public class UserRegistrationController {
+public class CreateListingController {
 
     @Inject
     private FacesContext facesContext;
 
     @Inject
-    private UserFacade userFacade;
+    private BookFacade bookFacade;
+
 
     @Produces
     @Named
-    User regUser;
+    private Listing newListing;
+
+    @Produces
+    @Named
+    private Book book;
+
+    private String author;
 
     @PostConstruct
     public void init(){
-        regUser = new User();
+        newListing = new Listing();
+        book = new Book();
     }
 
-    public void register(){
-        regUser.setLastLoginDate(LocalDate.now());
-        regUser.setRegistrationDate(LocalDate.now());
-        State result = userFacade.register(regUser);
+    public void createListing(User user){
+        newListing.setBook(book);
+        newListing.setUser(user);
+        State result = bookFacade.createListing(newListing);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
         init();
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
