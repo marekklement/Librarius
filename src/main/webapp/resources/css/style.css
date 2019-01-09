@@ -6,9 +6,9 @@ body { background-image: linear-gradient(top, #f1f3f3, #d4dae0), url('http://i.m
     background: #eceeee;
     border: 1px solid #42464b;
     border-radius: 6px;
-    height: 400px;
+    height: 200px;
     margin: 20px auto 0;
-    width: 400px;
+    width: 200px;
 }
 .login h1 {
     background-image: linear-gradient(top, #f1f3f3, #d4dae0);

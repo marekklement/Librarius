@@ -46,7 +46,8 @@ public class BookController {
         bookList = bookFacade.findListingsByFilter(new BookFilter(isbn, title, author, BookCategory.valueOf(selectedCategory)));
     }
 
-    public String showListingDetail(){
+    public String showListingDetail(Long listingId){
+        this.setSelectedListing(listingId);
         listing = bookFacade.getListing(selectedListing);
         return "book-detail";
     }
