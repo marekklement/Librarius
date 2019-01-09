@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "LI_LISTING")
 @NamedQueries({
-        @NamedQuery(name = "findListingByIsbn", query = "select l from Listing l where :isbn in (l.book.ISBNs)"),
+        @NamedQuery(name = "findListingByIsbn", query = "select l from Listing l where :isbn in (l.book.isbn)"),
 })
 @SequenceGenerator(name = Listing.SEQ_NAME, sequenceName = Listing.SEQ_NAME)
 public class Listing implements Serializable {

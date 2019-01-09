@@ -42,7 +42,7 @@
 //        Book book = new Book();
 //        book.setLanguage("CZ");
 //        book.setTitle("Zakon smecky");
-//        book.setISBNs(ISBNs);
+//        book.setIsbn(ISBNs);
 //        book.setBookCategories(bookCategories);
 //
 //        Listing listing = new Listing();

@@ -14,4 +14,6 @@ public interface BookService {
 
     List<Book> findByTitle(String title);
 
+    Book findBook(String title, Long isbn);
+
 }

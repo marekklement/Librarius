@@ -42,11 +42,11 @@ public class BookController {
     private List<Listing> bookList;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         bookList = bookFacade.getAllListings();
     }
 
-    public void filter(){
+    public void filter() {
         bookList = bookFacade.findListingsByFilter(new BookFilter(isbn, title, author, BookCategory.valueOf(selectedCategory)));
     }
 
@@ -57,7 +57,7 @@ public class BookController {
         return "book-detail";
     }
 
-    public void updateListing(){
+    public void updateListing() {
         logger.info("Updating listing " + listing.getBook().getTitle());
         listing.setPrice(newPrice);
         State result = bookFacade.updateListing(listing);
@@ -65,7 +65,7 @@ public class BookController {
         facesContext.addMessage(null, msg);
     }
 
-    public void deleteListing(){
+    public void deleteListing() {
         logger.info("Deleting listing " + listing.getBook().getTitle());
         bookFacade.removeListing(selectedListing);
         State result = bookFacade.updateListing(listing);
