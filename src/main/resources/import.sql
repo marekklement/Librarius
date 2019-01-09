@@ -13,7 +13,7 @@ INSERT INTO LI_BOOK_AUTH("id_book","id_author") VALUES
     (1000, 1000),
     (2000, 2000);
 
-INSERT INTO LI_LISTING("id_listing", "isbn", "price", "creation_time", "auto_graphed", "id_book", "id_user") VALUES
-   (1000, 1234, 100, to_date('1963-09-01', 'YYYY-MM-DD'), false, 1000, 'user'),
-   (2000, 9876, 99, to_date('1963-09-01', 'YYYY-MM-DD'), false, 2000, 'user');
+INSERT INTO LI_LISTING("id_listing", "isbn", "price", "creation_time", "auto_graphed", "id_book", "id_user", "invalidated") VALUES
+   (1000, 9788020009807, 100, to_date('1963-09-01', 'YYYY-MM-DD'), false, 1000, 'user', false ),
+   (2000, 9788020009808, 99, to_date('1963-09-01', 'YYYY-MM-DD'), false, 2000, 'user', false );
 

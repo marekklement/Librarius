@@ -20,10 +20,10 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
     @Query(value = "select l from Listing l "
                    + "join l.book b "
                    + "join b.authors a "
-                   + "where (:isbn is not null and l.isbn = :isbn) OR "
-                   + "(:title is not null and b.title = :title) OR "
-                   + "(:author is not null and a.name = :author) ")
-    List<Listing> findByFilter(@Param("isbn") Long isbn,
+                   + "where (:price is not null and l.price >= :price) AND "
+                   + "(:title = '' or b.title = :title) AND "
+                   + "(:author = '' or a.name = :author) ")
+    List<Listing> findByFilter(@Param("price") Double price,
                               @Param("title") String title,
                               @Param("author") String author);
 }

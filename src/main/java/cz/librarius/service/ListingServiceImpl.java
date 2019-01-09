@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import cz.librarius.domain.Listing;
+import cz.librarius.enums.BookCategory;
 import cz.librarius.enums.State;
 import cz.librarius.repository.ListingRepository;
 import cz.librarius.utils.BookFilter;
@@ -68,10 +69,12 @@ public class ListingServiceImpl implements ListingService {
 
     @Override
     public List<Listing> findByFilter(BookFilter bookFilter) {
-        List<Listing> listings = listingRepository.findByFilter(bookFilter.getIsbn(), bookFilter.getTitle(), bookFilter.getAuthor());
-        listings = listings.stream()
-            .filter(listing -> listing.getBook().getBookCategories().contains(bookFilter.getBookCategory()))
-            .collect(toList());
+        List<Listing> listings = listingRepository.findByFilter(bookFilter.getPrice(), bookFilter.getTitle(), bookFilter.getAuthor());
+        if (bookFilter.getBookCategory() != BookCategory.ALL) {
+            listings = listings.stream()
+                    .filter(listing -> listing.getBook().getBookCategories().contains(bookFilter.getBookCategory()))
+                    .collect(toList());
+        }
 
         return listings;
     }

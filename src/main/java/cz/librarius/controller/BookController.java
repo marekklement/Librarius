@@ -34,8 +34,10 @@ public class BookController {
     @Inject
     private BookFacade bookFacade;
 
-    private String isbn, title, author;
+    private String title, author;
+    private Double price = 0.0;
     private String selectedCategory;
+
     private Listing listing;
     private BookCategory[] cathegories = BookCategory.values();
     private List<Listing> bookList;
@@ -46,7 +48,8 @@ public class BookController {
     }
 
     public void filter() {
-        bookList = bookFacade.findListingsByFilter(new BookFilter(Long.valueOf(isbn), title, author, BookCategory.valueOf(selectedCategory)));
+        logger.info("Filtering books by price " + price + ",title " + title + ",author" + author + " and category " + selectedCategory);
+        bookList = bookFacade.findListingsByFilter(new BookFilter(price, title, author, BookCategory.valueOf(selectedCategory)));
     }
 
     public String showListingDetail(Long selectedId){
@@ -63,20 +66,22 @@ public class BookController {
         init();
     }
 
-    public void deleteListing() {
+    public String deleteListing() {
         logger.info("Deleting listing " + listing.getBook().getTitle());
         State result = bookFacade.removeListing(listing.getId());
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
         init();
+        if (result == State.FAIL_LISTING_NOT_EXIST) return "book-detail";
+        else return "books";
     }
 
-    public String getIsbn() {
-        return isbn;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public String getTitle() {

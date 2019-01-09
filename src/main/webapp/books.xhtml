@@ -21,12 +21,25 @@
     </b:navBar>
 </h:body >
 <f:view>
+
     <h:form>
-        <b:formGroup>
-            <b:selectOneMenu value="#{bookController.selectedCategory}" colMd="2" label="Select category:">
+        <h:panelGrid columns="5" size="sm" cellpadding="5" >
+            <b:selectOneMenu value="#{bookController.selectedCategory}" label="Select category:">
                 <f:selectItems value="#{bookController.cathegories}" var="category" />
             </b:selectOneMenu>
-        </b:formGroup>
+
+            <b:inputText id="prize" label="Min price:" labelStyle="width:80px;" fieldSize="sm" value="#{bookController.price}">
+            </b:inputText>
+
+            <b:inputText id="title" label="Title:" labelStyle="width:60px;" fieldSize="sm" value="#{bookController.title}">
+            </b:inputText>
+
+            <b:inputText id="author" label="Author:" labelStyle="width:60px;" fieldSize="sm" value="#{bookController.author}">
+            </b:inputText>
+
+            <b:commandButton value="Filter" icon="filter" action="#{bookController.filter}"/>
+        </h:panelGrid>
+
         <b:dataTable value="#{bookController.bookList}"
                      var="listing"
                      select="true"
@@ -41,26 +54,14 @@
             <b:dataTableColumn value="#{listing.book.authors.get(0).name}" label="Author"/>
             <b:dataTableColumn value="#{listing.book.title}" label = "Title"/>
             <b:dataTableColumn value="#{listing.price}" label = "Price"/>
-            <b:dataTableColumn>
+            <b:dataTableColumn label="">
                 <b:commandButton value="edit" icon="edit" ajax="true"
-
                                  action= "#{bookController.showListingDetail(listing.id)}" >
                 </b:commandButton>
 
             </b:dataTableColumn>
 
         </b:dataTable>
-
-        <p>
-            <h:panelGrid columns="2">
-                <b:commandButton id="detail"
-                                 action="#{bookController.showListingDetail}"
-                                 value="Detail" styleClass="detail"/>
-                <h:messages styleClass="messages"
-                            errorClass="invalid" infoClass="valid"
-                            warnClass="warning" globalOnly="true"/>
-            </h:panelGrid>
-        </p>
     </h:form>
 
 </f:view>

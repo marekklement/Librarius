@@ -4,24 +4,24 @@ import cz.librarius.enums.BookCategory;
 
 public class BookFilter {
 
-    private Long isbn;
+    private Double price;
     private String title;
     private String author;
     private BookCategory bookCategory;
 
-    public BookFilter(Long isbn, String title, String author, BookCategory bookCategory) {
-        this.isbn = isbn;
+    public BookFilter(Double price, String title, String author, BookCategory bookCategory) {
+        this.price = price;
         this.title = title;
         this.author = author;
         this.bookCategory = bookCategory;
     }
 
-    public Long getIsbn() {
-        return isbn;
+    public Double getPrice() {
+        return price;
     }
 
-    public void setIsbn(Long isbn) {
-        this.isbn = isbn;
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public String getTitle() {

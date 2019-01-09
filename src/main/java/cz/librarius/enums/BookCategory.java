@@ -1,6 +1,7 @@
 package cz.librarius.enums;
 
 public enum BookCategory {
+    ALL,
     FANTASY,
     ACTION_AND_ADVENTURE,
     ART,
