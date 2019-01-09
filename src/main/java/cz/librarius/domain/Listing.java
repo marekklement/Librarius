@@ -15,6 +15,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -24,10 +25,20 @@ import javax.validation.constraints.NotNull;
 @Table(name = "LI_LISTING")
 @NamedQueries({
     @NamedQuery(name = "findListingByIsbn", query = "select l from Listing l where :isbn in (l.book.isbn)"),
+    @NamedQuery(name = Listing.FIND_ALL_BY_INVALIDATED_IS_FALSE, query = "select l from Listing l where l.invalidated = FALSE"),
+    @NamedQuery(name = Listing.FIND_BY_FILTER, query = "select l from Listing l "
+                                                       + "join l.book b "
+                                                       + "join b.authors a "
+                                                       + "where (:isbn is not null and l.isbn = :isbn) "
+                                                       + "OR (:title is not null and b.title = :title) "
+                                                       + "OR (:author is not null and a.name = :author)"),
+
 })
 @SequenceGenerator(name = Listing.SEQ_NAME, sequenceName = Listing.SEQ_NAME)
 public class Listing implements Serializable {
 
+    public static final String FIND_ALL_BY_INVALIDATED_IS_FALSE = "findAllByInvalidatedIsFalse";
+    public static final String FIND_BY_FILTER = "findByFilter";
     static final String SEQ_NAME = "SEQ_LI_LISTING";
 
     private Long id;

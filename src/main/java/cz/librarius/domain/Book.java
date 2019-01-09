@@ -1,5 +1,7 @@
 package cz.librarius.domain;
 
+import org.springframework.data.domain.Persistable;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,10 +18,12 @@ import cz.librarius.enums.BookCategory;
 @Table(name = "LI_BOOK")
 @NamedQueries({
         @NamedQuery(name = "findBookByTitle", query = "select b from Book b where b.title = :title"),
+        @NamedQuery(name = Book.FIND_BOOK_BY_TITLE_AND_ISBN, query = "select b from Book b where b.title = :title and b.isbn = :isbn"),
 })
 @SequenceGenerator(name = Book.SEQ_NAME, sequenceName = Book.SEQ_NAME)
 public class Book implements Serializable {
 
+    public static final String FIND_BOOK_BY_TITLE_AND_ISBN = "findBookByTitleAndIsbn";
     static final String SEQ_NAME = "SEQ_LI_BOOK";
 
     private Long id;
@@ -79,6 +83,7 @@ public class Book implements Serializable {
         name = "LI_BOOK_CATEGORY",
         joinColumns = @JoinColumn(name = "ID_BOOK_CATEGORY", nullable = false)
     )
+    @Enumerated(EnumType.STRING)
     public Set<BookCategory> getBookCategories() {
         if (bookCategories == null) {
             bookCategories = new HashSet<>();

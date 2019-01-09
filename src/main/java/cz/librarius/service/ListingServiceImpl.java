@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 
 import cz.librarius.domain.Listing;
 import cz.librarius.enums.State;
-import cz.librarius.repository.ListingRepository;
+import cz.librarius.repository.dao.ListingRepository;
 import cz.librarius.utils.BookFilter;
 
 import static java.util.stream.Collectors.toList;
@@ -16,6 +16,8 @@ import static java.util.stream.Collectors.toList;
 @Transactional
 public class ListingServiceImpl implements ListingService {
 
+//    @Inject
+//    private ListingRepository listingRepository;
     @Inject
     private ListingRepository listingRepository;
     @Inject
@@ -40,12 +42,12 @@ public class ListingServiceImpl implements ListingService {
 
     @Override
     public Listing findById(long id) {
-        return listingRepository.findById(id).orElse(null);
+        return listingRepository.find(id);
     }
 
     @Override
     public State updateListing(Listing listing) {
-        Listing foundListing = listingRepository.findById(listing.getId()).orElse(null);
+        Listing foundListing = listingRepository.find(listing.getId());
         State state = State.OK;
 
         if (foundListing != null && !listing.isInvalidated()) {
@@ -57,7 +59,7 @@ public class ListingServiceImpl implements ListingService {
             foundListing.setAutoGraphed(listing.isAutoGraphed());
             foundListing.setPrice(listing.getPrice());
 
-            listingRepository.save(foundListing);
+            listingRepository.update(foundListing);
         } else {
             logger.info("listing not exist");
             state = State.FAIL_LISTING_NOT_EXIST;
@@ -79,7 +81,7 @@ public class ListingServiceImpl implements ListingService {
     @Override
     public void removeListing(Listing listing) {
         listing.setInvalidated(true);
-        listingRepository.save(listing);
+        listingRepository.update(listing);
     }
 
 }
