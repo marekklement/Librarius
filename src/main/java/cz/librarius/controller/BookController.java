@@ -50,8 +50,9 @@ public class BookController {
         bookList = bookFacade.findListingsByFilter(new BookFilter(isbn, title, author, BookCategory.valueOf(selectedCategory)));
     }
 
-    public String showListingDetail(){
+    public String showListingDetail(Long selectedId){
         logger.info("Redirecting to detail of listing " + selectedListing);
+        this.setSelectedListing(selectedId);
         listing = bookFacade.getListing(selectedListing);
         return "book-detail";
     }
