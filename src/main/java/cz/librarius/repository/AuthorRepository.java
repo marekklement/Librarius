@@ -7,4 +7,6 @@ import cz.librarius.domain.Author;
 
 @Eager
 public interface AuthorRepository extends JpaRepository<Author, Long> {
+
+    Author findAuthorByName(String name);
 }

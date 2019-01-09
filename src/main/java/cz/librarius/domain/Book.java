@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import cz.librarius.enums.BookCategory;
 
@@ -23,7 +24,7 @@ public class Book implements Serializable {
     private Long id;
     private String language;
     private String title;
-    private Set<Long> ISBNs;
+    private Long isbn;
     private Set<BookCategory> bookCategories;
     private List<Author> authors;
 
@@ -56,21 +57,17 @@ public class Book implements Serializable {
         this.title = title;
     }
 
-    @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(
-        name = "LI_BOOK_ISBN",
-        joinColumns = @JoinColumn(name = "ID_ISBN", nullable = false)
-    )
-    public Set<Long> getISBNs() {
-        if (ISBNs == null) {
-            ISBNs = new HashSet<>();
-        }
-
-        return ISBNs;
+//    @ElementCollection(fetch = FetchType.LAZY)
+//    @CollectionTable(
+//        name = "LI_BOOK_ISBN",
+//        joinColumns = @JoinColumn(name = "ID_ISBN", nullable = false)
+//    )
+    public Long getIsbn() {
+        return isbn;
     }
 
-    public void setISBNs(Set<Long> ISBNs) {
-        this.ISBNs = ISBNs;
+    public void setIsbn(Long isbn) {
+        this.isbn = isbn;
     }
 
     @ElementCollection(fetch = FetchType.EAGER)

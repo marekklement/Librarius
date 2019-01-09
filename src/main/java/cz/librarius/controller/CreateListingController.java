@@ -1,15 +1,15 @@
 package cz.librarius.controller;
 
 
-import cz.librarius.domain.Author;
-import cz.librarius.domain.Book;
-import cz.librarius.domain.User;
-import cz.librarius.domain.Listing;
-import cz.librarius.enums.BookCategory;
-import cz.librarius.enums.State;
-import cz.librarius.facade.BookFacade;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -18,12 +18,14 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.logging.Logger;
+
+import cz.librarius.domain.Author;
+import cz.librarius.domain.Book;
+import cz.librarius.domain.Listing;
+import cz.librarius.domain.User;
+import cz.librarius.enums.BookCategory;
+import cz.librarius.enums.State;
+import cz.librarius.facade.BookFacade;
 
 @ManagedBean
 @ViewScoped
@@ -48,12 +50,12 @@ public class CreateListingController implements Serializable {
     private BookCategory[] cathegories = BookCategory.values();
 
     @PostConstruct
-    public void init(){
+    public void init() {
         newListing = new Listing();
         book = new Book();
     }
 
-    public void createListing(){
+    public void createListing() {
         logger.info("Creating listing " + book.getTitle() + " with user " + loggedUser.getUsername());
         Author newAuthor = new Author();
         newAuthor.setName(author);

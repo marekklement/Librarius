@@ -127,6 +127,36 @@
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.16" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.arquillian.core:arquillian-core-spi:1.1.2.Final-wildfly-1" level="project" />
     <orderEntry type="library" name="Maven: org.jboss.arquillian.config:arquillian-config-api:1.1.2.Final-wildfly-1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.extension:arquillian-service-integration-spring-inject:1.1.0.Alpha1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-impl-maven:2.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-api-maven:2.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-api:2.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-spi-maven:2.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.shrinkwrap.resolver:shrinkwrap-resolver-spi:2.0.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-api:1.13.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-impl:1.13.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-spi:1.13.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-util:1.13.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.aether:aether-connector-wagon:1.13.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-aether-provider:3.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-model:3.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-model-builder:3.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-repository-metadata:3.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-settings:3.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven:maven-settings-builder:3.0.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.plexus:plexus-interpolation:1.14" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.codehaus.plexus:plexus-utils:2.0.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.plexus:plexus-sec-dispatcher:1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.sonatype.plexus:plexus-cipher:1.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.wagon:wagon-provider-api:2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.wagon:wagon-file:2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.wagon:wagon-http-lightweight:2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.maven.wagon:wagon-http-shared4:2.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jsoup:jsoup:1.7.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.httpcomponents:httpcore:4.2.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: commons-io:commons-io:2.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.extension:arquillian-service-integration-spring:1.1.0.Alpha1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.arquillian.extension:arquillian-service-integration-spring-javaconfig:1.1.0.Alpha1" level="project" />
     <orderEntry type="library" name="Maven: net.bootsfaces:bootsfaces:1.4.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.wildfly:wildfly-arquillian-container-remote:8.0.0.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.wildfly:wildfly-arquillian-common:8.0.0.Final" level="project" />
