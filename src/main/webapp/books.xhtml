@@ -22,6 +22,11 @@
 </h:body >
 <f:view>
     <h:form>
+        <b:formGroup>
+            <b:selectOneMenu value="#{bookController.selectedCategory}" colMd="2" label="Select category:">
+                <f:selectItems value="#{bookController.cathegories}" var="category" />
+            </b:selectOneMenu>
+        </b:formGroup>
         <b:dataTable value="#{bookController.bookList}"
                      var="listing"
                      select="true"

@@ -19,19 +19,19 @@
         <h2>Person registration</h2>
         <h:panelGrid columns="3"  >
             <h:outputLabel for="firstName">First name:</h:outputLabel>
-            <h:inputText id="firstName" value="#{regUser.name}"/>
+            <h:inputText id="firstName" value="#{userRegistrationController.regUser.name}"/>
             <h:message for="firstName" errorClass="invalid"/>
 
             <h:outputLabel for="lastName">Last name:</h:outputLabel>
-            <h:inputText id="lastName" value="#{regUser.surname}"/>
+            <h:inputText id="lastName" value="#{userRegistrationController.regUser.surname}"/>
             <h:message for="lastName" errorClass="invalid"/>
 
             <h:outputLabel for="userName">Username:</h:outputLabel>
-            <h:inputText id="userName" value="#{regUser.username}"/>
+            <h:inputText id="userName" value="#{userRegistrationController.regUser.username}"/>
             <h:message for="userName" errorClass="invalid"/>
 
             <h:outputLabel for="password">Password:</h:outputLabel>
-            <h:inputSecret id="password" value="#{regUser.password}"/>
+            <h:inputSecret id="password" value="#{userRegistrationController.regUser.password}"/>
             <h:message for="password" errorClass="invalid"/>
 
         </h:panelGrid>

@@ -18,10 +18,14 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
+import java.util.logging.Logger;
 
 @ManagedBean
 @RequestScoped
 public class BookController {
+
+    @Inject
+    private Logger logger;
 
     @Inject
     private FacesContext facesContext;
@@ -46,20 +50,22 @@ public class BookController {
         bookList = bookFacade.findListingsByFilter(new BookFilter(isbn, title, author, BookCategory.valueOf(selectedCategory)));
     }
 
-    public String showListingDetail(Long listingId){
-        this.setSelectedListing(listingId);
+    public String showListingDetail(){
+        logger.info("Redirecting to detail of listing " + selectedListing);
         listing = bookFacade.getListing(selectedListing);
         return "book-detail";
     }
 
-    public void updateBook(){
+    public void updateListing(){
+        logger.info("Updating listing " + listing.getBook().getTitle());
         listing.setPrice(newPrice);
         State result = bookFacade.updateListing(listing);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
     }
 
-    public void deleteBook(){
+    public void deleteListing(){
+        logger.info("Deleting listing " + listing.getBook().getTitle());
         bookFacade.removeListing(selectedListing);
         State result = bookFacade.updateListing(listing);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");

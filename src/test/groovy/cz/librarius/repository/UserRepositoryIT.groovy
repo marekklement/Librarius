@@ -1,7 +1,7 @@
 package cz.librarius.repository
 
 import cz.librarius.domain.User
-import cz.librarius.utils.AbstractSpockDaoIT
+import cz.librarius.repository.dao.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ContextConfiguration

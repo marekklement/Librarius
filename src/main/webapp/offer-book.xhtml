@@ -24,19 +24,27 @@
           <h2>Book offer</h2>
             <h:panelGrid columns="3">
                 <h:outputLabel for="bookName">Name of the book:</h:outputLabel>
-                <h:inputText id="bookName" value="#{book.title}"/>
+                <h:inputText id="bookName" value="#{createListingController.book.title}"/>
                 <h:message for="bookName" errorClass="invalid"/>
+
+                <h:outputLabel for="bookISBN">ISBN if the book:</h:outputLabel>
+                <h:inputText id="bookISBN" value="#{createListingController.newListing.isbn}"/>
+                <h:message for="bookISBN" errorClass="invalid"/>
 
                 <h:outputLabel for="author">Author</h:outputLabel>
                 <h:inputText id="author" value="#{createListingController.author}"/>
                 <h:message for="author" errorClass="invalid"/>
 
                 <h:outputLabel for="prize">Prize:</h:outputLabel>
-                <h:inputText id="prize" value="#{newListing.price}"/>
+                <h:inputText id="prize" value="#{createListingController.newListing.price}"/>
                 <h:message for="prize" errorClass="invalid"/>
 
-
             </h:panelGrid>
+            <b:formGroup>
+                <b:selectOneMenu value="#{createListingController.selectedCategory}" colMd="2" label="Select category:" labelColMd="2">
+                    <f:selectItems value="#{createListingController.cathegories}" var="category" />
+                </b:selectOneMenu>
+            </b:formGroup>
             <p>
                 <h:panelGrid columns="2">
                     <h:commandButton id="offerBook"

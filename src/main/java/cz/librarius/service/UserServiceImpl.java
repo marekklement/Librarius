@@ -2,17 +2,17 @@ package cz.librarius.service;
 
 import java.time.LocalDate;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import cz.librarius.domain.User;
-import cz.librarius.repository.UserRepoImpl;
+import cz.librarius.repository.UserRepository;
 
-@Stateless
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Inject
-    private UserRepoImpl userRepository;
+    private UserRepository userRepository;
 
     @Override
     public void register(User user) {
