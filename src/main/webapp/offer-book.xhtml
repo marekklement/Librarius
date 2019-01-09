@@ -39,6 +39,10 @@
                 <h:inputText id="prize" value="#{newListing.price}"/>
                 <h:message for="prize" errorClass="invalid"/>
 
+                <h:selectOneMenu value="#{createListingController.selectedCategory}">
+                    <f:selectItems value="#{createListingController.cathegories}" var="category" />
+                </h:selectOneMenu>
+
 
             </h:panelGrid>
             <p>

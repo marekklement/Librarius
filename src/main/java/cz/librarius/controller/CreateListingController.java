@@ -5,23 +5,24 @@ import cz.librarius.domain.Author;
 import cz.librarius.domain.Book;
 import cz.librarius.domain.User;
 import cz.librarius.domain.Listing;
+import cz.librarius.enums.BookCategory;
 import cz.librarius.enums.State;
 import cz.librarius.facade.BookFacade;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 @ManagedBean
@@ -48,7 +49,8 @@ public class CreateListingController implements Serializable {
     @ManagedProperty("#{userLoginController.logUser}")
     private User loggedUser;
 
-    private String author;
+    private String author, selectedCategory;
+    private BookCategory[] cathegories = BookCategory.values();
 
     @PostConstruct
     public void init(){
@@ -60,9 +62,12 @@ public class CreateListingController implements Serializable {
         logger.info("Creating listing " + book.getTitle() + " with user " + loggedUser.getUsername());
         Author newAuthor = new Author();
         newAuthor.setName(author);
-        List<Author> list = new ArrayList<>();
-        list.add(newAuthor);
-        book.setAuthors(list);
+        List<Author> authors = new ArrayList<>();
+        authors.add(newAuthor);
+        book.setAuthors(authors);
+        Set<BookCategory> categories = new HashSet<>();
+        categories.add(BookCategory.valueOf(selectedCategory));
+        book.setBookCategories(categories);
         newListing.setBook(book);
         newListing.setUser(loggedUser);
         State result = bookFacade.createListing(newListing);
@@ -85,5 +90,21 @@ public class CreateListingController implements Serializable {
 
     public void setLoggedUser(User loggedUser) {
         this.loggedUser = loggedUser;
+    }
+
+    public String getSelectedCategory() {
+        return selectedCategory;
+    }
+
+    public void setSelectedCategory(String selectedCategory) {
+        this.selectedCategory = selectedCategory;
+    }
+
+    public BookCategory[] getCathegories() {
+        return cathegories;
+    }
+
+    public void setCathegories(BookCategory[] cathegories) {
+        this.cathegories = cathegories;
     }
 }
