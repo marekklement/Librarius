@@ -42,7 +42,7 @@ public class BookFacadeImpl implements BookFacade {
 
     @Override
     public List<Listing> findListingsByFilter(BookFilter bookFilter) {
-        return null;
+        return listingService.findByFilter(bookFilter);
     }
 
     @Override
