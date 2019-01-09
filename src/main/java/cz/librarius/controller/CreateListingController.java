@@ -38,12 +38,7 @@ public class CreateListingController implements Serializable {
     @Inject
     private Logger logger;
 
-    @Produces
-    @Named
     private Listing newListing;
-
-    @Produces
-    @Named
     private Book book;
 
     @ManagedProperty("#{userLoginController.logUser}")
@@ -106,5 +101,21 @@ public class CreateListingController implements Serializable {
 
     public void setCathegories(BookCategory[] cathegories) {
         this.cathegories = cathegories;
+    }
+
+    public Listing getNewListing() {
+        return newListing;
+    }
+
+    public void setNewListing(Listing newListing) {
+        this.newListing = newListing;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 }

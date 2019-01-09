@@ -21,11 +21,11 @@
 </h:body>
 <f:view>
     <h:form>
-        <p>
-            <h:selectOneMenu value="#{bookController.selectedCategory}">
+        <b:formGroup>
+            <b:selectOneMenu value="#{bookController.selectedCategory}" colMd="2" label="Select category:">
                 <f:selectItems value="#{bookController.cathegories}" var="category" />
-            </h:selectOneMenu>
-        </p>
+            </b:selectOneMenu>
+        </b:formGroup>
         <b:dataTable value="#{bookController.bookList}"
                      excel="true"
                      csv="true"
