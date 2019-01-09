@@ -6,11 +6,13 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import cz.librarius.domain.User;
-import cz.librarius.repository.UserRepository;
+import cz.librarius.repository.dao.UserRepository;
 
 @Transactional
 public class UserServiceImpl implements UserService {
 
+//    @Inject
+//    private UserRepository userRepository;
     @Inject
     private UserRepository userRepository;
 
@@ -34,7 +36,7 @@ public class UserServiceImpl implements UserService {
         User foundUser = userRepository.findByUsername(username);
         foundUser.setLastLoginDate(localDate);
 
-        userRepository.save(foundUser);
+        userRepository.update(foundUser);
     }
 
 

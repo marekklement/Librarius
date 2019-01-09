@@ -6,11 +6,13 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 
 import cz.librarius.domain.Book;
-import cz.librarius.repository.BookRepository;
+import cz.librarius.repository.dao.BookRepository;
 
 @Transactional
 public class BookServiceImpl implements BookService {
 
+//    @Inject
+//    private BookRepository bookRepository;
     @Inject
     private BookRepository bookRepository;
 
@@ -21,7 +23,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getAll() {
-        return bookRepository.findAll();
+        return bookRepository.list();
     }
 
     @Override
