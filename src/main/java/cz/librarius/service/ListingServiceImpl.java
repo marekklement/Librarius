@@ -1,6 +1,7 @@
 package cz.librarius.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -8,6 +9,8 @@ import javax.transaction.Transactional;
 import cz.librarius.domain.Listing;
 import cz.librarius.repository.ListingRepository;
 import cz.librarius.utils.BookFilter;
+
+import static java.util.stream.Collectors.*;
 
 @Transactional
 public class ListingServiceImpl implements ListingService {
@@ -53,8 +56,12 @@ public class ListingServiceImpl implements ListingService {
 
     @Override
     public List<Listing> findByFilter(BookFilter bookFilter) {
+        List<Listing> listings = listingRepository.findByFilter(bookFilter.getIsbn(), bookFilter.getTitle(), bookFilter.getAuthor());
+        listings = listings.stream()
+            .filter(listing -> listing.getBook().getBookCategories().contains(bookFilter.getBookCategory()))
+            .collect(toList());
 
-        return null;
+        return listings;
     }
 
 }
