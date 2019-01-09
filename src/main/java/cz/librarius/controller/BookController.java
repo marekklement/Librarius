@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class BookController {
 
     @Inject
