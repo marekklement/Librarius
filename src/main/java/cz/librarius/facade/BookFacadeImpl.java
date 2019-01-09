@@ -1,5 +1,6 @@
 package cz.librarius.facade;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -74,6 +75,7 @@ public class BookFacadeImpl implements BookFacade {
             listing.getBook().setAuthors(authors);
         }
         listing.setUser(user);
+        listing.setCreationTime(LocalDateTime.now());
 
         listingService.addListing(listing);
 
