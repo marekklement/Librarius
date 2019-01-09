@@ -6,7 +6,11 @@ import cz.librarius.domain.Listing;
 
 public interface ListingRepository extends Repository<Listing> {
 
-    List<Listing> findAllByIsbn(String isbn);
+    List<Listing> findAllByIsbn(Long isbn);
+
+    List<Listing> findAllByInvalidatedIsFalse();
+
+    List<Listing> findByFilter(Double isbn, String title, String author);
 
 //    @Query(value = "select l from Listing l "
 //                   + "join l.book b "

@@ -1,5 +1,7 @@
 package cz.librarius.repository.dao;
 
+import org.springframework.data.domain.Persistable;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
