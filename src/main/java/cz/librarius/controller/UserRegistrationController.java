@@ -45,7 +45,7 @@ public class UserRegistrationController {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
         init();
-        if (result == State.FAIL) return "registration";
+        if (result == State.FAIL_EXIST_USER) return "registration";
         else return "login";
     }
 

@@ -14,6 +14,7 @@ import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,7 +22,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class BookController {
 
     @Inject
@@ -35,8 +36,6 @@ public class BookController {
 
     private String isbn, title, author;
     private String selectedCategory;
-    private Long selectedListing;
-    private Double newPrice;
     private Listing listing;
     private BookCategory[] cathegories = BookCategory.values();
     private List<Listing> bookList;
@@ -51,25 +50,25 @@ public class BookController {
     }
 
     public String showListingDetail(Long selectedId){
-        logger.info("Redirecting to detail of listing " + selectedListing);
-        this.setSelectedListing(selectedId);
-        listing = bookFacade.getListing(selectedListing);
+        logger.info("Redirecting to detail of listing " + selectedId);
+        listing = bookFacade.getListing(selectedId);
         return "book-detail";
     }
 
     public void updateListing() {
         logger.info("Updating listing " + listing.getBook().getTitle());
-        listing.setPrice(newPrice);
         State result = bookFacade.updateListing(listing);
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
         facesContext.addMessage(null, msg);
+        init();
     }
 
     public void deleteListing() {
         logger.info("Deleting listing " + listing.getBook().getTitle());
-        bookFacade.removeListing(selectedListing);
-        State result = bookFacade.updateListing(listing);
+        State result = bookFacade.removeListing(listing.getId());
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
+        facesContext.addMessage(null, msg);
+        init();
     }
 
     public String getIsbn() {
@@ -102,22 +101,6 @@ public class BookController {
 
     public void setSelectedCategory(String selectedCategory) {
         this.selectedCategory = selectedCategory;
-    }
-
-    public Long getSelectedListing() {
-        return selectedListing;
-    }
-
-    public void setSelectedListing(Long selectedListing) {
-        this.selectedListing = selectedListing;
-    }
-
-    public Double getNewPrice() {
-        return newPrice;
-    }
-
-    public void setNewPrice(Double newPrice) {
-        this.newPrice = newPrice;
     }
 
     public Listing getListing() {

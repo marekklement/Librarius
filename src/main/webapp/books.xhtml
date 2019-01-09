@@ -49,18 +49,18 @@
             </b:dataTableColumn>
 
         </b:dataTable>
-    </h:form>
 
-    <p>
-        <h:panelGrid columns="2">
-            <h:commandButton id="detail"
-                             action="#{bookController.showListingDetail}"
-                             value="Detail" styleClass="detail"/>
-            <h:messages styleClass="messages"
-                        errorClass="invalid" infoClass="valid"
-                        warnClass="warning" globalOnly="true"/>
-        </h:panelGrid>
-    </p>
+        <p>
+            <h:panelGrid columns="2">
+                <b:commandButton id="detail"
+                                 action="#{bookController.showListingDetail}"
+                                 value="Detail" styleClass="detail"/>
+                <h:messages styleClass="messages"
+                            errorClass="invalid" infoClass="valid"
+                            warnClass="warning" globalOnly="true"/>
+            </h:panelGrid>
+        </p>
+    </h:form>
 
 </f:view>
 
