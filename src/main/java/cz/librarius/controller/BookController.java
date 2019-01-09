@@ -15,6 +15,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -38,7 +39,6 @@ public class BookController {
     private Double price = 0.0;
     private String selectedCategory;
 
-    private Listing listing;
     private BookCategory[] cathegories = BookCategory.values();
     private List<Listing> bookList;
 
@@ -52,29 +52,7 @@ public class BookController {
         bookList = bookFacade.findListingsByFilter(new BookFilter(price, title, author, BookCategory.valueOf(selectedCategory)));
     }
 
-    public String showListingDetail(Long selectedId){
-        logger.info("Redirecting to detail of listing " + selectedId);
-        listing = bookFacade.getListing(selectedId);
-        return "book-detail";
-    }
 
-    public void updateListing() {
-        logger.info("Updating listing " + listing.getBook().getTitle());
-        State result = bookFacade.updateListing(listing);
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
-        facesContext.addMessage(null, msg);
-        init();
-    }
-
-    public String deleteListing() {
-        logger.info("Deleting listing " + listing.getBook().getTitle());
-        State result = bookFacade.removeListing(listing.getId());
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, result.toString(), "");
-        facesContext.addMessage(null, msg);
-        init();
-        if (result == State.FAIL_LISTING_NOT_EXIST) return "book-detail";
-        else return "books";
-    }
 
     public Double getPrice() {
         return price;
@@ -106,14 +84,6 @@ public class BookController {
 
     public void setSelectedCategory(String selectedCategory) {
         this.selectedCategory = selectedCategory;
-    }
-
-    public Listing getListing() {
-        return listing;
-    }
-
-    public void setListing(Listing listing) {
-        this.listing = listing;
     }
 
     public BookCategory[] getCathegories() {
