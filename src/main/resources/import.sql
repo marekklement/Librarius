@@ -3,7 +3,7 @@ INSERT INTO LI_AUTHOR("id_author", "country", "name") VALUES
    (2000, 'SK', 'Nicolas');
 
 INSERT INTO LI_USER("username", "password", "name", "surname", "registration_date", "last_login_date") VALUES
-   ('user', 'pass', 'Nicolas', 'Cage', to_date('1963-09-01', 'YYYY-MM-DD'), to_date('1963-09-01', 'YYYY-MM-DD'));
+   ('user', 'password', 'Nicolas', 'Cage', to_date('1963-09-01', 'YYYY-MM-DD'), to_date('1963-09-01', 'YYYY-MM-DD'));
 
 INSERT INTO LI_BOOK("id_book", "language", "title") VALUES
    (1000, 'CZ', 'JajaAPaja'),

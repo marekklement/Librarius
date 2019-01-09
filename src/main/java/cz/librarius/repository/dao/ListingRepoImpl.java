@@ -24,9 +24,9 @@ public class ListingRepoImpl extends GenericRepository<Listing> implements Listi
     }
 
     @Override
-    public List<Listing> findByFilter(Double isbn, String title, String author) {
+    public List<Listing> findByFilter(Double price, String title, String author) {
         TypedQuery<Listing> listingTypedQuery = em.createNamedQuery(Listing.FIND_BY_FILTER, Listing.class)
-            .setParameter("isbn", isbn)
+            .setParameter("price", price)
             .setParameter("title", title)
             .setParameter("author", author);
 

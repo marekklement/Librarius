@@ -10,7 +10,7 @@ public interface ListingRepository extends Repository<Listing> {
 
     List<Listing> findAllByInvalidatedIsFalse();
 
-    List<Listing> findByFilter(Double isbn, String title, String author);
+    List<Listing> findByFilter(Double price, String title, String author);
 
 //    @Query(value = "select l from Listing l "
 //                   + "join l.book b "

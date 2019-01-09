@@ -29,9 +29,9 @@ import javax.validation.constraints.NotNull;
     @NamedQuery(name = Listing.FIND_BY_FILTER, query = "select l from Listing l "
                                                        + "join l.book b "
                                                        + "join b.authors a "
-                                                       + "where (:isbn is not null and l.isbn = :isbn) "
-                                                       + "OR (:title is not null and b.title = :title) "
-                                                       + "OR (:author is not null and a.name = :author)"),
+                                                       + "where (:price is not null and l.price >= :price) AND "
+                                                       + "(:title = '' or b.title = :title) AND "
+                                                       + "(:author = '' or a.name = :author) "),
 
 })
 @SequenceGenerator(name = Listing.SEQ_NAME, sequenceName = Listing.SEQ_NAME)
