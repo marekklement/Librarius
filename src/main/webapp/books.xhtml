@@ -38,7 +38,7 @@
                      print="true"
 
                      >
-            <b:dataTableColumn value="#{listing.book.authors}" label="Author"/>
+            <b:dataTableColumn value="#{listing.book.authors.get(0).name}" label="Author"/>
             <b:dataTableColumn value="#{listing.book.title}" label = "Title"/>
             <b:dataTableColumn>
                 <b:commandButton value="edit" icon="edit" ajax="true"
