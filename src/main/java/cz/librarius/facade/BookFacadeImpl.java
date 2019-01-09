@@ -47,9 +47,7 @@ public class BookFacadeImpl implements BookFacade {
 
     @Override
     public State updateListing(Listing listing) {
-        listingService.updateListing(listing);
-
-        return State.OK;
+        return listingService.updateListing(listing);
     }
 
     @Override
@@ -89,6 +87,8 @@ public class BookFacadeImpl implements BookFacade {
 
         if (foundListing == null) {
             state = State.FAIL_LISTING_NOT_EXIST;
+        } else {
+            listingService.removeListing(foundListing);
         }
 
         return state;

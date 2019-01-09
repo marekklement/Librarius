@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "LI_AUTHOR")
@@ -21,6 +24,9 @@ public class Author implements Serializable {
     private Long id;
     private LocalDate birthDate;
     private String country;
+    @NotNull
+//    @Pattern(regexp = "[A-Za-z]*", message = "must contain only letters and spaces")
+    @Size(min = 1, max = 255)
     private String name;
 
     @Id

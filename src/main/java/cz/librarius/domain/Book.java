@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import cz.librarius.enums.BookCategory;
 
@@ -23,8 +24,11 @@ public class Book implements Serializable {
 
     private Long id;
     private String language;
+    @NotNull
+    @Size(min = 1, max = 255)
     private String title;
     private Long isbn;
+    @NotNull
     private Set<BookCategory> bookCategories;
     private List<Author> authors;
 

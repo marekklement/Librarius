@@ -1,6 +1,11 @@
 package cz.librarius.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -14,9 +19,18 @@ public class User implements Serializable {
 
     static final String SEQ_NAME = "SEQ_LI_USER";
 
+    @Size(max = 255)
+    @Pattern(regexp = "[A-Za-z]*", message = "must contain only letters and spaces")
     private String name;
+    @NotNull
+    @Size(min = 5, max = 255)
     private String password;
+    @Size(max = 255)
+    @Pattern(regexp = "[A-Za-z]*", message = "must contain only letters and spaces")
     private String surname;
+    @NotNull
+    @Size(min = 1, max = 255)
+    @Email(message = "Email should be valid")
     private String username;
     private LocalDate registrationDate;
     private LocalDate lastLoginDate;

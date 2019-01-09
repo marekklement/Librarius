@@ -12,7 +12,10 @@ import cz.librarius.domain.Listing;
 @Eager
 public interface ListingRepository extends JpaRepository<Listing, Long> {
 
-    List<Listing> findAllByIsbn(String isbn);
+    List<Listing> findAllByIsbn(Long isbn);
+
+    @Query(value = "select l from Listing l where l.invalidated = FALSE")
+    List<Listing> findAllByInvalidatedIsFalse();
 
     @Query(value = "select l from Listing l "
                    + "join l.book b "
